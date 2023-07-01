@@ -2,31 +2,23 @@ import { BrowserRouter } from "react-router-dom";
 import {
   About,
   Contact,
-  Experience,
-  Feedbacks,
   Hero,
   Navbar,
   Tech,
   Works,
-  StarsCanvas,
+
 } from "./components";
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="relative z-0 bg-white-100">
-        <div className=" bg-hero-pattern bg-cover bg-no-repeat bg-center">
-          <Navbar />
-          <Hero />
-        </div>
+      <div className="bg-background bg-cover bg-no-repeat bg-center relative z-0 bg-white-100">
+        <Navbar />
+        <Hero />
         <About />
-        <Experience />
-        <Tech />
         <Works />
-        <Feedbacks />
         <div className="relative z-0">
           <Contact />
-          <StarsCanvas />
         </div>
       </div>
     </BrowserRouter>
