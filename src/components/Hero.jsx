@@ -25,8 +25,9 @@ const Hero = () => {
                 interfaces.
               </p>
               <motion.button
+                
                 whileHover={{ scale: 1.2 }}
-                className=" my-5 md:mt-12 text-white md:p-2 p-1 lg:p-4 rounded-lg bg-primary"
+                className=" text-sm my-5 md:mt-12 text-white md:p-2 py-2 px-3 lg:p-4 rounded-lg bg-primary"
                 onClick={() => {
                   const link = document.createElement('a');
                   link.href = 'https://drive.google.com/uc?export=download&id=1-JCsMrueUt9PZVmo4PAIP_FR3OqaMrCz';

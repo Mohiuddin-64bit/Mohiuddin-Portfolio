@@ -23,7 +23,8 @@ import {
   jobit,
   tripguide,
   threejs,
-  firebase
+  firebase,
+  mern
 } from "../assets";
 
 export const navLinks = [
@@ -57,8 +58,8 @@ const services = [
   },
 
   {
-    title: "GIT",
-    icon: git,
+    title: "MERN Stack",
+    icon: mern,
   },
 ];
 

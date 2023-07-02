@@ -6,6 +6,11 @@ import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
 import Lottie from "lottie-react";
 import Send from "../assets/Send.json";
+import Swal from "sweetalert2";
+
+// template_jowaeq3 - Template ID
+// service_iaa07q7 - Service ID
+// 7cUljP2FVNy3NffHy - Public key
 
 const Contact = () => {
   const formRef = useRef();
@@ -15,8 +20,51 @@ const Contact = () => {
     message: "",
   });
   const [loading, setLoading] = useState(false);
-  const handleChange = (e) => {};
-  const handleSubmit = (e) => {};
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading();
+    emailjs
+      .send(
+        "service_iaa07q7",
+        "template_jowaeq3",
+        {
+          from_name: form.name,
+          to_name: "Mohiuddin",
+          from_email: form.email,
+          to_email: "mohiuddin.niddu@gmail.com",
+          message: form.message,
+        },
+        "7cUljP2FVNy3NffHy"
+      )
+      .then(
+        () => {
+          setLoading(false);
+          Swal.fire(
+            'Good job!',
+            'I will get back to you soon',
+            'success'
+          )
+          setForm({
+            name: "",
+            email: "",
+            message: "",
+          });
+        },
+        (error) => {
+          setLoading(false);
+          console.log(error.message);
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: `${error.message}`,
+          });
+        }
+      );
+  };
   return (
     <>
       <div className="xl:mt-12 lg:flex lg:flex-row items-center gap-10 overflow-hidden">
