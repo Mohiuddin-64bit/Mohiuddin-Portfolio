@@ -24,33 +24,46 @@ const ProjectCard = ({
           scale: 1,
           speed: 450,
         }}
-        className="bg-primary  p-5 rounded-2xl sm:w-[360px] w-full"
+        className="bg-primary flex flex-col justify-between h-[650px] p-5 rounded-2xl sm:w-[360px] w-full"
       >
-        <div className="relative w-full h-[230px] ">
-          <img
-            className="w-full h-[230px] object-cover rounded-2xl"
-            src={image}
-            alt=""
-          />
-          <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
-            <div
-              className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
-              onClick={() => window.open(source_code_link, "_blank")}
-            >
-              <img src={github} className="w-1/2 h-1/2 object-contain" alt="" />
+        <div>
+          <div className="relative w-full ">
+            <img
+              className="w-full h-[230px] object-cover rounded-2xl"
+              src={image}
+              alt=""
+            />
+            <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
+              <div
+                className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
+                onClick={() => window.open(source_code_link, "_blank")}
+              >
+                <img
+                  src={github}
+                  className="w-1/2 h-1/2 object-contain"
+                  alt=""
+                />
+              </div>
             </div>
           </div>
+          <div className="mt-5 ">
+            <h3 className="text-white font-bold text-[24px]">{name}</h3>
+            <p className="mt-2 text-white-100 text-[14px]">{description}</p>
+          </div>
         </div>
-        <div className="mt-5 ">
-          <h3 className="text-white font-bold text-[24px]">{name}</h3>
-          <p className="mt-2 text-white-100 text-[14px]">{description}</p>
-        </div>
+
         <div className="mt-4  flex flex-wrap gap-2">
           {tags.map((tag) => (
-            <p key={tag.name} className={`text-[14px] px-4 mx-auto bg-sky-950 rounded-lg py-2 `}>
-              <span><img className="w-6 h-6 mx-auto"  src={tag.icon} alt="" /></span>{tag.name}
+            <p
+              key={tag.name}
+              className={`text-[14px] px-4 mx-auto bg-sky-950 rounded-lg py-2 `}
+            >
+              <span>
+                <img className="w-6 h-6 mx-auto" src={tag.icon} alt="" />
+              </span>
+              {tag.name}
             </p>
-          ))} 
+          ))}
         </div>
       </Tilt>
     </motion.div>
