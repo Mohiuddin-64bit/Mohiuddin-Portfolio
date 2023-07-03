@@ -83,7 +83,7 @@ const ProjectCard = ({
           {tags.map((tag) => (
             <p
               key={tag.name}
-              className={`text-[14px] px-4 mx-auto bg-sky-950 rounded-lg py-2 `}
+              className={`lg:text-[14px] text-[10px] px-4 mx-auto bg-sky-950 rounded-lg lg:py-2 py-1 `}
             >
               <span>
                 <img className="w-6 h-6 mx-auto" src={tag.icon} alt="" />
