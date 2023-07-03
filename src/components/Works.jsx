@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
-import { github, reactjs, tailwind } from "../assets";
+import { github, internet, reactjs, tailwind } from "../assets";
 import { SectionWrapper } from "../hoc";
 import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
@@ -15,7 +15,10 @@ const ProjectCard = ({
   tags,
   image,
   source_code_link,
+  live_site
 }) => {
+  const [readMore, setReadMore] = useState(false);
+  console.log(readMore);
   return (
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
       <Tilt
@@ -24,7 +27,7 @@ const ProjectCard = ({
           scale: 1,
           speed: 450,
         }}
-        className="bg-primary flex flex-col justify-between h-[650px] p-5 rounded-2xl sm:w-[360px] w-full"
+        className="bg-primary flex flex-col justify-between p-5 rounded-2xl sm:w-[360px] w-full"
       >
         <div>
           <div className="relative w-full ">
@@ -34,21 +37,45 @@ const ProjectCard = ({
               alt=""
             />
             <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
-              <div
-                className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
-                onClick={() => window.open(source_code_link, "_blank")}
-              >
-                <img
-                  src={github}
-                  className="w-1/2 h-1/2 object-contain"
-                  alt=""
-                />
+              <div className="flex flex-col gap-1">
+                <div
+                  className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
+                  onClick={() => window.open(source_code_link, "_blank")}
+                >
+                  <img
+                    src={github}
+                    className="w-1/2 h-1/2 object-contain"
+                    alt=""
+                  />
+                </div>
+                <div
+                  className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
+                  onClick={() => window.open(live_site, "_blank")}
+                >
+                  <img
+                    src={internet}
+                    className="w-1/2 h-1/2 object-contain"
+                    alt=""
+                  />
+                </div>
               </div>
             </div>
           </div>
           <div className="mt-5 ">
             <h3 className="text-white font-bold text-[24px]">{name}</h3>
-            <p className="mt-2 text-white-100 text-[14px]">{description}</p>
+            <p className="mt-2 text-white-100 text-[14px]">
+              {readMore ? (
+                <>{description} </>
+              ) : (
+                <>{description.slice(0, 190)}... </>
+              )}
+              <span
+                className="text-blue-600 text-sm cursor-pointer hover:text-blue-700"
+                onClick={() => setReadMore(!readMore)}
+              >
+                Read More
+              </span>
+            </p>
           </div>
         </div>
 

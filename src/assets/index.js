@@ -22,11 +22,15 @@ import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
 import mern from '../assets/mern.png'
+import internet from '../assets/internet.png'
 
 import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
 import starbucks from "./company/starbucks.png";
 import tesla from "./company/tesla.png";
+import bengali from './projects/bengali-bites.web.app_.png'
+import snapSchool from './projects/span-school.web.app_.png'
+import hotwheels from './projects/hotwheels.png'
 
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
@@ -35,6 +39,10 @@ import background from '../assets/background.jpg'
 
 export {
   logo,
+  hotwheels,
+  internet,
+  bengali,
+  snapSchool,
   backend,
   creator,
   mobile,

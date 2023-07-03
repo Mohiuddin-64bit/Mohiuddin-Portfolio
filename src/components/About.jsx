@@ -1,5 +1,5 @@
 import React from "react";
-import {Tilt} from "react-tilt";
+import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
@@ -8,10 +8,10 @@ import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
 
 const ServiceCard = ({ index, title, icon }) => (
-  <Tilt className='xs:w-[250px] w-full'>
+  <Tilt className="xs:w-[250px] w-full">
     <motion.div
       variants={fadeIn("right", "spring", index * 0.5, 0.75)}
-      className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card'
+      className="w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card"
     >
       <div
         options={{
@@ -19,15 +19,15 @@ const ServiceCard = ({ index, title, icon }) => (
           scale: 1,
           speed: 450,
         }}
-        className='bg-primary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col'
+        className="bg-primary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col"
       >
         <img
           src={icon}
-          alt='web-development'
-          className='w-16 h-16 object-contain'
+          alt="web-development"
+          className="w-16 h-16 object-contain"
         />
 
-        <h3 className='text-white text-[20px] font-bold text-center'>
+        <h3 className="text-white text-[20px] font-bold text-center">
           {title}
         </h3>
       </div>
@@ -39,22 +39,29 @@ const About = () => {
   return (
     <>
       <motion.div className="" variants={textVariant()}>
-        <p className={`${styles.sectionSubText} text-black-200`}>Introduction</p>
-        <h2 className={`${styles.sectionHeadText} text-black-200`}>Overview.</h2>
+        <p className={`${styles.sectionSubText} text-black-200`}>
+          Introduction
+        </p>
+        <h2 className={`${styles.sectionHeadText} text-black-200`}>
+          Overview.
+        </h2>
       </motion.div>
 
       <motion.p
         variants={fadeIn("", "", 0.1, 1)}
-        className='mt-4  text-gray-600 text-[17px] max-w-3xl leading-[30px]'
+        className="mt-4  text-gray-600 text-[17px] max-w-3xl leading-[30px]"
       >
-        I'm a skilled software developer with experience in TypeScript and
-        JavaScript, and expertise in frameworks like React, Node.js, and
-        Three.js. I'm a quick learner and collaborate closely with clients to
-        create efficient, scalable, and user-friendly solutions that solve
-        real-world problems. Let's work together to bring your ideas to life!
+        I have a strong foundation in front-end development and am always
+        looking to improve my skills and learn new technologies. In my free
+        time, I enjoy working on personal projects and contributing to open
+        source projects. I believe that collaboration and sharing knowledge is
+        an important part of being a developer and I am always happy to help
+        others and learn from others in the community. Thank you for visiting my
+        profile. I hope you find my work interesting and feel free to reach out
+        if you have any questions or want to collaborate on a project.
       </motion.p>
 
-      <div className='mt-20 flex flex-wrap gap-10'>
+      <div className="mt-20 flex flex-wrap gap-10">
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}

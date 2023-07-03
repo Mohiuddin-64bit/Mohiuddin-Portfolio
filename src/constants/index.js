@@ -10,11 +10,13 @@ import {
   reactjs,
   redux,
   tailwind,
+  internet,
   nodejs,
   mongodb,
   git,
   figma,
   docker,
+  hotwheels,
   meta,
   starbucks,
   tesla,
@@ -24,6 +26,8 @@ import {
   tripguide,
   threejs,
   firebase,
+  bengali,
+  snapSchool,
   mern
 } from "../assets";
 
@@ -144,8 +148,9 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image: carrent,
-    source_code_link: "https://github.com/",
+    image: snapSchool,
+    source_code_link: "https://github.com/Mohiuddin-64bit/Snap-School-Client",
+    live_site: "https://span-school.web.app/"
   },
   {
     name: "Hotwheels",
@@ -168,8 +173,9 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image: jobit,
-    source_code_link: "https://github.com/",
+    image: hotwheels,
+    source_code_link: "https://github.com/Mohiuddin-64bit/Hotwheels-client",
+    live_site: "https://hotwheels-8a070.web.app/"
   },
   {
     name: "Bengali Bites",
@@ -192,8 +198,9 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image: tripguide,
+    image: bengali,
     source_code_link: "https://github.com/",
+    
   },
 ];
 
