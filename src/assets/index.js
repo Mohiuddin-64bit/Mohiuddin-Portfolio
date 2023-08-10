@@ -28,7 +28,7 @@ import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
 import starbucks from "./company/starbucks.png";
 import tesla from "./company/tesla.png";
-import bengali from './projects/bengali-bites.web.app_.png'
+import bengali from './projects/bengali-bites.web.app_.jpg'
 import snapSchool from './projects/span-school.web.app_.png'
 import hotwheels from './projects/hotwheels.png'
 

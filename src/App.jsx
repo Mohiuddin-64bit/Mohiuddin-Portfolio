@@ -4,7 +4,6 @@ import {
   Contact,
   Hero,
   Navbar,
-  Tech,
   Works,
 
 } from "./components";

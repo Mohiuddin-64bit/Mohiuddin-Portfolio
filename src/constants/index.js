@@ -48,6 +48,14 @@ export const navLinks = [
 
 const services = [
   {
+    title: "HTML 5",
+    icon: html,
+  },
+  {
+    title: "CSS 3",
+    icon: css,
+  },
+  {
     title: "React JS",
     icon: reactjs,
   },
@@ -62,8 +70,32 @@ const services = [
   },
 
   {
-    title: "MERN Stack",
+    title: "MongoDB",
     icon: mern,
+  },
+  {
+    title: "Node JS",
+    icon: nodejs,
+  },
+  // {
+  //   title: "Express JS",
+  //   icon: expressjs,
+  // },
+  {
+    title: "TypeScript",
+    icon: typescript,
+  },
+  {
+    title: "Firebase",
+    icon: firebase,
+  },
+  {
+    title: "git",
+    icon: git,
+  },
+  {
+    title: "figma",
+    icon: figma,
   },
 ];
 
