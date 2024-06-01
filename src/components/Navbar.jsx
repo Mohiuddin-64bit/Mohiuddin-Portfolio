@@ -8,7 +8,7 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   return (
     <nav
-      className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-gradient-to-r from-[#81CFFF] to-[#BDBAFF]`}
+      className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 backdrop-blur-sm bg-white/30`}
     >
       <div className="w-full flex justify-between items-center mx-w-7xl mx-auto">
         <Link
@@ -29,12 +29,11 @@ const Navbar = () => {
           {navLinks.map((Link) => (
             <li
               key={Link.id}
-              className={`${
-                active === Link.title ? "text-gray-500" : "text-black"
-              } hover:text-gray-500 text-[18px] font-medium cursor-pointer`}
+              className={`${active === Link.title ? "text-gray-500" : "text-black"
+                } hover:text-gray-500 text-[18px] font-medium cursor-pointer`}
               onClick={() => setActive(Link.title)}
             >
-              <a href={`#${Link.id}`}>{Link.title}</a>
+              <a href={`${Link.path}`}>{Link.title}</a>
             </li>
           ))}
         </ul>
@@ -54,9 +53,8 @@ const Navbar = () => {
               {navLinks.map((Link) => (
                 <li
                   key={Link.id}
-                  className={`${
-                    active === Link.title ? "text-white" : "text-secondary"
-                  }font-poppins text-[16px] font-medium cursor-pointer`}
+                  className={`${active === Link.title ? "text-white" : "text-secondary"
+                    }font-poppins text-[16px] font-medium cursor-pointer`}
                   onClick={() => {
                     setActive(Link.title);
                     setToggle(!toggle);

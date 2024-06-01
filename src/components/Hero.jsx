@@ -8,7 +8,7 @@ import computer from "../assets/computer.json";
 const Hero = () => {
   return (
     <>
-      <section className=" relative w-full h-screen mx-auto">
+      <section className="bg-hero-background bg-center bg-no-repeat bg-cover relative w-full h-screen mx-auto">
         <div
           className={`absolute inset-0 top-[120px] lg:top-[220px]  max-w-7xl mx-auto ${styles.paddingX} lg:flex  items-start gap-5`}
         >
@@ -21,13 +21,11 @@ const Hero = () => {
                 </span>
               </h1>
               <p className={`${styles.heroSubText} lg:mt-8  text-black-100`}>
-                I am a Web Developer, user <br className="sm:block hidden" />
-                interfaces.
+                I am a MERN Stack Developer Specialized in React.js
               </p>
               <motion.button
-                
                 whileHover={{ scale: 1.2 }}
-                className=" text-sm my-5 md:mt-12 text-white md:p-2 py-2 px-3 lg:p-4 rounded-lg bg-primary"
+                className="btn-primary cursor-pointer"
                 onClick={() => {
                   const link = document.createElement('a');
                   link.href = 'https://drive.google.com/uc?export=download&id=1-JCsMrueUt9PZVmo4PAIP_FR3OqaMrCz';
@@ -44,6 +42,7 @@ const Hero = () => {
             <Lottie className="w-full" animationData={computer} />
           </div>
         </div>
+        <div className="header_fade-in absolute z-10"></div>
       </section>
     </>
   );

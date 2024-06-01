@@ -21,6 +21,7 @@ module.exports = {
       backgroundImage: {
         "hero-pattern": "url('/src/assets/herobg.png')",
         "background": "url('/src/assets/background.jpg')",
+        'hero-background': "url('/white-background.jpg')",
         'primary': 'linear-gradient(to right, #0f0c29, #302b63, #24243e)',
       },
     },

@@ -72,8 +72,8 @@ const Contact = () => {
           className=" bg-primary lg:w-1/2 p-8 rounded-2xl"
           variants={slideIn("left", "tween", 0.2, 1)}
         >
-          <p className={styles.sectionSubText}>Get In Touch</p>
-          <h3 className={styles.sectionHeadText}>Contact.</h3>
+          <p className="text-white sm:text-[18px] text-[14px]  uppercase tracking-wider">Get In Touch</p>
+          <h3 className="text-white md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]">Contact.</h3>
           <form
             ref={formRef}
             onSubmit={handleSubmit}
