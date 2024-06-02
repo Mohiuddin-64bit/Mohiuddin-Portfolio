@@ -1,6 +1,7 @@
 import React from 'react'
 import { About, Contact, Hero, Works } from '../components'
 import Blogs from '../components/Blogs'
+import Education from '../components/Education'
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
       <About />
       <Works />
       <Blogs />
+      <Education />
       <div className="relative z-0">
         <Contact />
       </div>
