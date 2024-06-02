@@ -8,7 +8,7 @@ import computer from "../assets/computer.json";
 const Hero = () => {
   return (
     <>
-      <section className="bg-hero-background bg-center bg-no-repeat bg-cover relative w-full h-screen mx-auto">
+      <section id="hero" className="bg-hero-background bg-center bg-no-repeat bg-cover relative w-full h-screen mx-auto">
         <div
           className={`absolute inset-0 top-[120px] lg:top-[220px]  max-w-7xl mx-auto ${styles.paddingX} lg:flex  items-start gap-5`}
         >
@@ -42,7 +42,7 @@ const Hero = () => {
             <Lottie className="w-full" animationData={computer} />
           </div>
         </div>
-        {/* <div className="header_fade-in absolute z-10"></div> */}
+        <div className="header_fade-in absolute z-10"></div>
       </section>
     </>
   );

@@ -13,7 +13,7 @@ import { blogs } from '../constants';
 const Blogs = () => {
   return (
     <>
-      <motion.div variants={textVariant()}>
+      <motion.div className="mt-4"  variants={textVariant()}>
         <p className={`${styles.sectionSubText} text-black-200`}>My Blogs</p>
         <h2 className={`${styles.sectionHeadText} text-black-200`}>
           Blogs.
