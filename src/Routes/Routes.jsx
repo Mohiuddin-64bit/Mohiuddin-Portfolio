@@ -6,6 +6,10 @@ import Projects from "../Pages/Projects";
 import SingleProject from "../Pages/SingleProject";
 import Blogs from "../Pages/Blogs";
 import SingleBlog from "../Pages/SingleBlog";
+import DashboardLayout from "../Layout/DashboardLayout";
+import Dashboard from "../Pages/Dashboard/Dashboard";
+import AddProject from "../Pages/Dashboard/AddProject";
+import AddBlogs from "../Pages/Dashboard/AddBlogs";
 
 
 export const router = createBrowserRouter([
@@ -21,5 +25,15 @@ export const router = createBrowserRouter([
       { path: "/blogs", element: <Blogs /> },
       { path: "/blogs/:id", element: <SingleBlog /> },
     ],
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      { index: true, element: <Dashboard /> },
+      { path: "/dashboard/add-blogs", element: <AddBlogs /> },
+      { path: "/dashboard/add-projects", element: <AddProject /> },
+    ],
   }
+
 ]);
