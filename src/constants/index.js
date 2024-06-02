@@ -97,10 +97,6 @@ const skills = [
     icon: figma,
   },
   {
-    title: "docker",
-    icon: docker,
-  },
-  {
     title: "Redux Toolkit",
     icon: redux,
   },

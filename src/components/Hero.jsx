@@ -42,7 +42,7 @@ const Hero = () => {
             <Lottie className="w-full" animationData={computer} />
           </div>
         </div>
-        <div className="header_fade-in absolute z-10"></div>
+        {/* <div className="header_fade-in absolute z-10"></div> */}
       </section>
     </>
   );

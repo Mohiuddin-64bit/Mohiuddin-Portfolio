@@ -9,7 +9,7 @@ import { fadeIn, textVariant } from "../utils/motion";
 import { skills } from "../constants";
 
 const ServiceCard = ({ index, title, icon }) => (
-  <Tilt className="xs:w-[250px] w-full">
+  <Tilt className="w-full">
     <motion.div
       variants={fadeIn("right", "spring", index * 0.5, 0.75)}
       className="w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card"
@@ -61,8 +61,7 @@ const About = () => {
         profile. I hope you find my work interesting and feel free to reach out
         if you have any questions or want to collaborate on a project.
       </motion.p>
-
-      <div className="mt-20 flex flex-wrap gap-10">
+      <div className="mt-20 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
         {skills.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}
