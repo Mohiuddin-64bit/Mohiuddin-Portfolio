@@ -4,86 +4,11 @@ import { motion } from "framer-motion";
 import { SectionWrapper } from '../hoc';
 import { fadeIn, textVariant } from '../utils/motion';
 import { styles } from '../styles';
-import { reactjs, tailwind } from '../assets';
-import { Tilt } from 'react-tilt';
 import { Link } from 'react-router-dom';
+import BlogCard from '../components/BlogCard';
+import { blogs } from '../constants';
 
-const blogs = [
-  {
-    index: 1,
-    name: "Blog 1",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius libero quo laudantium reprehenderit, doloremque dolorem exercitationem aliquam temporibus, porro iusto aperiam voluptatem harum amet, dolor culpa veniam facere fugit recusandae.",
-    tags: [
-      { name: "ReactJS", icon: reactjs },
-      { name: "TailwindCSS", icon: tailwind },
-    ],
-    image: "https://via.placeholder.com/150",
-    source_code_link: "https://github.com",
-    live_site: "https://google.com",
-  },
-  {
-    index: 2,
-    name: "Blog 2",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius libero quo laudantium reprehenderit, doloremque dolorem exercitationem aliquam temporibus, porro iusto aperiam voluptatem harum amet, dolor culpa veniam facere fugit recusandae.",
-    tags: [
-      { name: "ReactJS", icon: reactjs },
-      { name: "TailwindCSS", icon: tailwind },
-    ],
-    image: "https://via.placeholder.com/150",
-    source_code_link: "https://github.com",
-    live_site: "https://google.com",
-  },
-  {
-    index: 3,
-    name: "Blog 3",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius libero quo laudantium reprehenderit, doloremque dolorem exercitationem aliquam temporibus, porro iusto aperiam voluptatem harum amet, dolor culpa veniam facere fugit recusandae.",
 
-    tags: [
-      { name: "ReactJS", icon: reactjs },
-      { name: "TailwindCSS", icon: tailwind },
-    ],
-    image: "https://via.placeholder.com/150",
-    source_code_link: "https://github.com",
-    live_site: "https://google.com",
-  },
-];
-
-const BlogCard = ({
-  index,
-  name,
-  description,
-  image,
-}) => {
-
-  return (
-    <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
-      <Tilt
-        options={{
-          max: 45,
-          scale: 1,
-          speed: 450,
-        }}
-        className="bg-primary flex flex-col justify-between p-5 rounded-2xl sm:w-[360px] w-full"
-      >
-        <div>
-          <div className="relative w-full ">
-            <img
-              className="w-full h-[230px] object-cover rounded-2xl"
-              src={image}
-              alt=""
-            />
-          </div>
-          <div className="mt-5 ">
-            <h3 className="text-white font-bold text-[24px]">{name}</h3>
-            <p className="mt-2 text-white-100 text-[14px]">
-              {description.slice(0, 300)}...
-            </p>
-          </div>
-        </div>
-      </Tilt>
-    </motion.div>
-  );
-};
 
 const Blogs = () => {
   return (
@@ -109,7 +34,7 @@ const Blogs = () => {
       </div>
       <div className="mt-20 flex flex-wrap gap-7">
         {blogs.map((blog) => (
-          <Link key={blog.index}>
+          <Link to={`/blogs/${blog.index}`} key={blog.index}>
             <BlogCard  {...blog} />
           </Link>
         ))}

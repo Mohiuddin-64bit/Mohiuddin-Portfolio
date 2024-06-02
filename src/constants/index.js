@@ -160,9 +160,46 @@ const technologies = [
     name: "figma",
     icon: figma,
   },
+];
+
+
+const blogs = [
   {
-    name: "docker",
-    icon: docker,
+    index: "1",
+    name: "Blog 1",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius libero quo laudantium reprehenderit, doloremque dolorem exercitationem aliquam temporibus, porro iusto aperiam voluptatem harum amet, dolor culpa veniam facere fugit recusandae.",
+    tags: [
+      { name: "ReactJS", icon: reactjs },
+      { name: "TailwindCSS", icon: tailwind },
+    ],
+    image: "https://via.placeholder.com/150",
+    source_code_link: "https://github.com",
+    live_site: "https://google.com",
+  },
+  {
+    index: "2",
+    name: "Blog 2",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius libero quo laudantium reprehenderit, doloremque dolorem exercitationem aliquam temporibus, porro iusto aperiam voluptatem harum amet, dolor culpa veniam facere fugit recusandae.",
+    tags: [
+      { name: "ReactJS", icon: reactjs },
+      { name: "TailwindCSS", icon: tailwind },
+    ],
+    image: "https://via.placeholder.com/150",
+    source_code_link: "https://github.com",
+    live_site: "https://google.com",
+  },
+  {
+    index: "3",
+    name: "Blog 3",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius libero quo laudantium reprehenderit, doloremque dolorem exercitationem aliquam temporibus, porro iusto aperiam voluptatem harum amet, dolor culpa veniam facere fugit recusandae.",
+
+    tags: [
+      { name: "ReactJS", icon: reactjs },
+      { name: "TailwindCSS", icon: tailwind },
+    ],
+    image: "https://via.placeholder.com/150",
+    source_code_link: "https://github.com",
+    live_site: "https://google.com",
   },
 ];
 
@@ -252,4 +289,4 @@ const projects = [
   },
 ];
 
-export { skills, technologies, projects };
+export { skills, technologies, projects, blogs };

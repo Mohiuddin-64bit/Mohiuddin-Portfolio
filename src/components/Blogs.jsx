@@ -4,6 +4,9 @@ import { motion } from "framer-motion";
 import { SectionWrapper } from '../hoc';
 import { fadeIn, textVariant } from '../utils/motion';
 import { styles } from '../styles';
+import { blogs } from '../constants';
+import BlogCard from './BlogCard';
+import { Link } from 'react-router-dom';
 
 const Blogs = () => {
   return (
@@ -26,6 +29,13 @@ const Blogs = () => {
           ability to solve complex problems, work with different technologies,
           and manage projects effectively.
         </motion.p>
+      </div>
+      <div className="mt-20 flex flex-wrap gap-7">
+        {blogs.map((blog) => (
+          <Link to={`/blogs/${blog.index}`} key={blog.index}>
+            <BlogCard  {...blog} />
+          </Link>
+        ))}
       </div>
     </>
   )
