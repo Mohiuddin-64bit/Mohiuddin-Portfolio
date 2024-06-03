@@ -9,7 +9,7 @@ import { useGetAllBlogsQuery } from '../redux/feature/blogs/blogsAPI';
 
 const SingleBlog = () => {
   const { id } = useParams();
-  
+
   const { data: blogs, error, isLoading } = useGetAllBlogsQuery();
   const singleBlogs = blogs?.find(blog => blog._id === id);
 
@@ -29,9 +29,14 @@ const SingleBlog = () => {
           className="mt-3 text-gray-600 text-[17px] leading-[30px]"
         >
           {/* {singleBlogs?.blog} */}
-          <p
+          {/* <p
             dangerouslySetInnerHTML={{
               __html: singleBlogs?.blog,
+            }}
+          ></p> */}
+          <p
+            dangerouslySetInnerHTML={{
+              __html: typeof description === 'string' ? description.slice(0, 300) : '',
             }}
           ></p>
         </motion.p>

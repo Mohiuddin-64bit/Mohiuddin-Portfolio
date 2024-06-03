@@ -71,7 +71,7 @@ const ProjectCard = ({
 
             <p className='mt-2 text-white-100 text-[14px]'
               dangerouslySetInnerHTML={{
-                __html: description?.slice(0, 300),
+                __html: typeof description === 'string' ? description.slice(0, 300) : '',
               }}
             ></p>
           </div>
@@ -124,7 +124,7 @@ const Works = () => {
         </motion.p>
       </div>
       <div className="mt-20 flex flex-wrap gap-7">
-      {isLoading && <p>Loading...</p>}
+        {isLoading && <p>Loading...</p>}
         {isError && <p>Error: {isError}</p>}
         {projects && projects.length === 0 && <p>No projects found</p>}
         {projects?.slice(0, 3)?.map((blog, index) => (

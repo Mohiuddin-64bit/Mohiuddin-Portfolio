@@ -40,10 +40,11 @@ const SingleProject = () => {
           // variants={fadeIn("", "", 0.1, 1)}
           className="mt-3 text-gray-600 text-[17px] max-w-3xl leading-[30px]"
           dangerouslySetInnerHTML={{
-            __html: singleProject?.description
+            __html: typeof description === 'string' ? description.slice(0, 300) : '',
           }}>
 
         </motion.p>
+
       </div>
       <div className='grid grid-cols-1 md:grid-cols-2  mt-12 justify-between'>
         <div>
