@@ -96,12 +96,6 @@ const Works = () => {
 
   const { data: projects, isLoading, isError } = useGetAllProjectsQuery()
 
-  console.log(projects)
-
-
-
-
-
   return (
     <>
       <motion.div variants={textVariant()}>
