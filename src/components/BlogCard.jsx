@@ -5,13 +5,12 @@ import { Tilt } from 'react-tilt';
 
 const BlogCard = ({
   index,
-  name,
-  description,
-  image,
+  imageLink,
+  blog
 }) => {
 
   return (
-    <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
+    <motion.div >
       <Tilt
         options={{
           max: 45,
@@ -24,15 +23,16 @@ const BlogCard = ({
           <div className="relative w-full ">
             <img
               className="w-full h-[230px] object-cover rounded-2xl"
-              src={image}
+              src={imageLink}
               alt=""
             />
           </div>
           <div className="mt-5 ">
-            <h3 className="text-white font-bold text-[24px]">{name}</h3>
-            <p className="mt-2 text-white-100 text-[14px]">
-              {description.slice(0, 300)}...
-            </p>
+            <p className='mt-2 text-white-100 text-[14px]'
+              dangerouslySetInnerHTML={{
+                __html: blog?.slice(0, 400),
+              }}
+            ></p>
           </div>
         </div>
       </Tilt>

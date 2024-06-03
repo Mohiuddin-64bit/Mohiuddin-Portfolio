@@ -6,6 +6,8 @@ import { SectionWrapper } from '../hoc';
 import { Tilt } from 'react-tilt';
 import { projects } from '../constants';
 import { github, internet } from '../assets';
+import { useGetAllProjectsQuery } from '../redux/feature/projects/projectsAPI';
+import { Link } from 'react-router-dom';
 
 
 const ProjectCard = ({
@@ -13,13 +15,17 @@ const ProjectCard = ({
   name,
   description,
   tags,
-  image,
+  technology,
+  imageLink,
   source_code_link,
   live_site
 }) => {
 
+  const technologies = technology.split(', ');
+
+
   return (
-    <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
+    <motion.div>
       <Tilt
         options={{
           max: 45,
@@ -32,7 +38,7 @@ const ProjectCard = ({
           <div className="relative w-full ">
             <img
               className="w-full h-[230px] object-cover rounded-2xl"
-              src={image}
+              src={imageLink}
               alt=""
             />
             <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
@@ -62,22 +68,22 @@ const ProjectCard = ({
           </div>
           <div className="mt-5 ">
             <h3 className="text-white font-bold text-[24px]">{name}</h3>
-            <p className="mt-2 text-white-100 text-[14px]">
-              {description.slice(0, 190)}...
-            </p>
+
+            <p className='mt-2 text-white-100 text-[14px]'
+              dangerouslySetInnerHTML={{
+                __html: description?.slice(0, 400),
+              }}
+            ></p>
           </div>
         </div>
 
-        <div className="mt-4 flex flex-wrap gap-2">
-          {tags.map((tag) => (
+        <div className="mt-4 flex flex-wrap gap-1">
+          {technologies.map((tech, index) => (
             <p
-              key={tag.name}
+              key={index}
               className={`lg:text-[14px] text-white text-[10px] px-4 mx-auto bg-sky-950 rounded-lg lg:py-2 py-1 `}
             >
-              <span>
-                <img className="w-6 h-6 mx-auto" src={tag.icon} alt="" />
-              </span>
-              {tag.name}
+              {tech}
             </p>
           ))}
         </div>
@@ -89,33 +95,49 @@ const ProjectCard = ({
 
 
 const Projects = () => {
+
+  const { data: projects, isLoading, isError } = useGetAllProjectsQuery()
+
+  console.log(projects)
+
+  
+
+
   return (
     <>
-    <motion.div className="mt-4"  variants={textVariant()}>
-      <p className={`${styles.sectionSubText} text-black-200`}>My work</p>
-      <h2 className={`${styles.sectionHeadText} text-black-200`}>
-        Projects.
-      </h2>
-    </motion.div>
+      <motion.div className="mt-4" variants={textVariant()}>
+        <p className={`${styles.sectionSubText} text-black-200`}>My work</p>
+        <h2 className={`${styles.sectionHeadText} text-black-200`}>
+          Projects.
+        </h2>
+      </motion.div>
 
-    <div className="w-full flex">
-      <motion.p
-        variants={fadeIn("", "", 0.1, 1)}
-        className="mt-3 text-gray-600 text-[17px] max-w-3xl leading-[30px]"
-      >
-        Following projects showcases my skills and experience through
-        real-world examples of my work. Each project is briefly described with
-        links to code repositories and live demos in it. It reflects my
-        ability to solve complex problems, work with different technologies,
-        and manage projects effectively.
-      </motion.p>
-    </div>
-    <div className="mt-20 flex flex-wrap gap-7">
-      {projects.map((project, index) => (
+      <div className="w-full flex">
+        <motion.p
+          variants={fadeIn("", "", 0.1, 1)}
+          className="mt-3 text-gray-600 text-[17px] max-w-3xl leading-[30px]"
+        >
+          Following projects showcases my skills and experience through
+          real-world examples of my work. Each project is briefly described with
+          links to code repositories and live demos in it. It reflects my
+          ability to solve complex problems, work with different technologies,
+          and manage projects effectively.
+        </motion.p>
+      </div>
+      <div className="mt-20 flex flex-wrap gap-7">
+        {/* {projects.map((project, index) => (
         <ProjectCard key={`project-${index}`} index={index} {...project} />
-      ))}
-    </div>
-  </>
+      ))} */}
+        {isLoading && <p>Loading...</p>}
+        {isError && <p>Error: {isError}</p>}
+        {projects && projects.length === 0 && <p>No projects found</p>}
+        {projects?.slice(0, 3)?.map((blog, index) => (
+          <Link to={`/projects/${blog?._id}`} key={blog._id}>
+            <ProjectCard  {...blog} index={index} />
+          </Link>
+        ))}
+      </div>
+    </>
   )
 }
 

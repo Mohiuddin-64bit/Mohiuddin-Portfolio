@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from "framer-motion";
 
 import { SectionWrapper } from '../hoc';
@@ -7,10 +7,14 @@ import { styles } from '../styles';
 import { Link } from 'react-router-dom';
 import BlogCard from '../components/BlogCard';
 import { blogs } from '../constants';
+import { useGetAllBlogsQuery } from '../redux/feature/blogs/blogsAPI';
 
 
 
 const Blogs = () => {
+
+  const { data:blogs, error, isLoading } = useGetAllBlogsQuery();
+
   return (
     <>
       <motion.div className="mt-4"  variants={textVariant()}>
@@ -33,9 +37,12 @@ const Blogs = () => {
         </motion.p>
       </div>
       <div className="mt-20 flex flex-wrap gap-7">
-        {blogs.map((blog) => (
-          <Link to={`/blogs/${blog.index}`} key={blog.index}>
-            <BlogCard  {...blog} />
+        {isLoading && <p>Loading...</p>}
+        {error && <p>Error: {error}</p>}
+        {blogs && blogs.length === 0 && <p>No blogs found</p>}
+        {blogs?.map((blog, index) => (
+          <Link to={`/blogs/${blog._id}`} key={blog._id}>
+            <BlogCard  {...blog} index={index} />
           </Link>
         ))}
       </div>

@@ -8,19 +8,24 @@ import { SectionWrapper } from "../hoc";
 import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 import { Link } from "react-router-dom";
+import { useGetAllProjectsQuery } from "../redux/feature/projects/projectsAPI";
 
 const ProjectCard = ({
   index,
   name,
   description,
   tags,
-  image,
+  technology,
+  imageLink,
   source_code_link,
   live_site
 }) => {
 
+  const technologies = technology.split(', ');
+
+
   return (
-    <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
+    <motion.div>
       <Tilt
         options={{
           max: 45,
@@ -33,7 +38,7 @@ const ProjectCard = ({
           <div className="relative w-full ">
             <img
               className="w-full h-[230px] object-cover rounded-2xl"
-              src={image}
+              src={imageLink}
               alt=""
             />
             <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
@@ -63,22 +68,22 @@ const ProjectCard = ({
           </div>
           <div className="mt-5 ">
             <h3 className="text-white font-bold text-[24px]">{name}</h3>
-            <p className="mt-2 text-white-100 text-[14px]">
-              {description.slice(0, 190)}...
-            </p>
+
+            <p className='mt-2 text-white-100 text-[14px]'
+              dangerouslySetInnerHTML={{
+                __html: description?.slice(0, 300),
+              }}
+            ></p>
           </div>
         </div>
 
-        <div className="mt-4 flex flex-wrap gap-2">
-          {tags.map((tag) => (
+        <div className="mt-4 flex flex-wrap gap-1">
+          {technologies.map((tech, index) => (
             <p
-              key={tag.name}
+              key={index}
               className={`lg:text-[14px] text-white text-[10px] px-4 mx-auto bg-sky-950 rounded-lg lg:py-2 py-1 `}
             >
-              <span>
-                <img className="w-6 h-6 mx-auto" src={tag.icon} alt="" />
-              </span>
-              {tag.name}
+              {tech}
             </p>
           ))}
         </div>
@@ -88,6 +93,15 @@ const ProjectCard = ({
 };
 
 const Works = () => {
+
+  const { data: projects, isLoading, isError } = useGetAllProjectsQuery()
+
+  console.log(projects)
+
+
+
+
+
   return (
     <>
       <motion.div variants={textVariant()}>
@@ -110,9 +124,12 @@ const Works = () => {
         </motion.p>
       </div>
       <div className="mt-20 flex flex-wrap gap-7">
-        {projects.map((project, index) => (
-          <Link to={`/projects/${project.id}`} key={`project-${index}`}>
-            <ProjectCard index={index} {...project} />
+      {isLoading && <p>Loading...</p>}
+        {isError && <p>Error: {isError}</p>}
+        {projects && projects.length === 0 && <p>No projects found</p>}
+        {projects?.slice(0, 3)?.map((blog, index) => (
+          <Link to={`/projects/${blog?._id}`} key={blog._id}>
+            <ProjectCard  {...blog} index={index} />
           </Link>
         ))}
       </div>

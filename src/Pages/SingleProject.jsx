@@ -6,49 +6,65 @@ import { SectionWrapper } from '../hoc';
 import { useParams } from 'react-router-dom';
 import { projects } from '../constants';
 import { snapSchool } from '../assets';
+import { useGetAllProjectsQuery } from '../redux/feature/projects/projectsAPI';
 
 const SingleProject = () => {
   const { id } = useParams();
+  console.log(id)
 
-  const singleProject = projects.find(project => project.id === id);
-  console.log(singleProject)
+  const { data: projects, isLoading, isError } = useGetAllProjectsQuery()
+
+  const singleProject = projects?.find(project => project._id === id);
+
+  console.log(projects)
+
+  if (isLoading) return <h1>Loading...</h1>
+
+  if (isError) return <h1>Error</h1>
+
+  const technologies = singleProject?.technology.split(', ');
+
+
+
 
   return (
     <>
-      <motion.div variants={textVariant()}>
+      <motion.div>
         <p className={`${styles.sectionSubText} text-black-200`}>Single Project</p>
         <h2 className={`${styles.sectionHeadText} text-black-200`}>
-          {singleProject.name}
+          {singleProject?.title}
         </h2>
       </motion.div>
-
       <div className="w-full flex">
         <motion.p
-          variants={fadeIn("", "", 0.1, 1)}
+          // variants={fadeIn("", "", 0.1, 1)}
           className="mt-3 text-gray-600 text-[17px] max-w-3xl leading-[30px]"
-        >
-          {singleProject.description}
+          dangerouslySetInnerHTML={{
+            __html: singleProject?.description
+          }}>
+
         </motion.p>
       </div>
-      <div className='grid grid-cols-2 mt-12 justify-between'>
+      <div className='grid grid-cols-1 md:grid-cols-2  mt-12 justify-between'>
         <div>
           <h3 className='text-3xl text-black-200'>Technologies used</h3>
           <div className='flex flex-wrap gap-4 mt-4'>
-            {singleProject.tags.map(tag => (
-              <div
-                key={tag.name}
-                className={`flex items-center gap-2 py-1 px-2 rounded-lg bg-gray-100`}
-              >
-                <img src={tag.icon} alt="" className='w-6 h-6' />
-                <p className={`text-[14px] ${tag.color}`}>{tag.name}</p>
-              </div>
-            ))}
+            <div className="mt-4 grid grid-cols-4 justify-items-start gap-1">
+              {technologies.map((tech, index) => (
+                <p
+                  key={index}
+                  className={`lg:text-[14px] text-white text-[10px] px-4 mx-auto bg-sky-950 rounded-lg lg:py-2 py-1 `}
+                >
+                  {tech}
+                </p>
+              ))}
+            </div>
 
             <div className='mt-8'>
               <h3 className='text-3xl text-black-200'>Project Links</h3>
               <div className='flex flex-wrap gap-4'>
                 <a
-                  href="https://snap-school.netlify.app/"
+                  href={singleProject?.liveLink}
                   target="_blank"
                   rel="noreferrer"
                   className='btn-primary'
@@ -56,7 +72,7 @@ const SingleProject = () => {
                   Live Site
                 </a>
                 <a
-                  href="https://snap-school.netlify.app/"
+                  href={singleProject?.githubLink}
                   target="_blank"
                   rel="noreferrer"
                   className='btn-primary'
@@ -67,7 +83,7 @@ const SingleProject = () => {
             </div>
           </div>
         </div>
-          <img className='w-full h-full rounded-lg' src={singleProject.image} alt="" />
+        <img className='w-full h-full rounded-lg' src={singleProject?.imageLink} alt="" />
       </div>
     </>
   )
