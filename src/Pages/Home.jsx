@@ -8,8 +8,8 @@ const Home = () => {
     <div className=" bg-cover bg-no-repeat bg-center relative z-0 bg-white-100">
       <Hero />
       <About />
-      <Works />
-      <Blogs />
+      {/* <Works /> */}
+      {/* <Blogs /> */}
       <Education />
       <div className="relative z-0">
         <Contact />

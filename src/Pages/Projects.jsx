@@ -70,10 +70,10 @@ const ProjectCard = ({
             <h3 className="text-white font-bold text-[24px]">{name}</h3>
 
             <p className='mt-2 text-white-100 text-[14px]'
-  dangerouslySetInnerHTML={{
-    __html: typeof description === 'string' ? description.slice(0, 300) : '',
-  }}
-></p>
+              dangerouslySetInnerHTML={{
+                __html: typeof description === 'string' ? description.slice(0, 300) : '',
+              }}
+            ></p>
           </div>
         </div>
 
@@ -100,7 +100,7 @@ const Projects = () => {
 
   console.log(projects)
 
-  
+
 
 
   return (
