@@ -25,8 +25,6 @@ const SingleProject = () => {
   const technologies = singleProject?.technology.split(', ');
 
 
-
-
   return (
     <>
       <motion.div>
@@ -40,7 +38,7 @@ const SingleProject = () => {
           // variants={fadeIn("", "", 0.1, 1)}
           className="mt-3 text-gray-600 text-[17px] max-w-3xl leading-[30px]"
           dangerouslySetInnerHTML={{
-            __html: typeof description === 'string' ? description.slice(0, 300) : '',
+            __html: singleProject?.description.slice(0, 300),
           }}>
 
         </motion.p>

@@ -12,7 +12,7 @@ const Hero = () => {
         <div
           className={`absolute inset-0 top-[120px] lg:top-[220px]  max-w-7xl mx-auto ${styles.paddingX} lg:flex  items-start gap-5`}
         >
-          <div className="flex gap-4">
+          <div className="flex gap-4 z-20">
             <div>
               <h1 className={`${styles.heroHeadText} text-[#090325]`}>
                 Hi, I'm <br />{" "}

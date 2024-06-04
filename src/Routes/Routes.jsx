@@ -10,12 +10,14 @@ import DashboardLayout from "../Layout/DashboardLayout";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import AddProject from "../Pages/Dashboard/AddProject";
 import AddBlogs from "../Pages/Dashboard/AddBlogs";
+import ErrorPage from "../components/ErrorPage";
 
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       { index: true, element: <Home /> },
       { path: "/about", element: <About /> },

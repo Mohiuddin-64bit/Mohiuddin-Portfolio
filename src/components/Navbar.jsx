@@ -1,11 +1,13 @@
 import { styles } from "../styles.js";
 import { navLinks } from "../constants";
 import { logo, menu, close } from "../assets";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
+
 const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
+
   return (
     <nav
       className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 backdrop-blur-sm bg-white/30`}
@@ -26,14 +28,14 @@ const Navbar = () => {
           </p>
         </Link>
         <ul className="list-none hidden sm:flex gap-10">
-          {navLinks.map((Link) => (
+          {navLinks.map((link) => (
             <li
-              key={Link.id}
-              className={`${active === Link.title ? "text-gray-500" : "text-black"
+              key={link.id}
+              className={`${active === link.title ? "text-gray-500" : "text-black"
                 } hover:text-gray-500 text-[18px] font-medium cursor-pointer`}
-              onClick={() => setActive(Link.title)}
+              onClick={() => setActive(link.title)}
             >
-              <a href={`${Link.path}`}>{Link.title}</a>
+              <NavLink to={link.path}>{link.title}</NavLink>
             </li>
           ))}
         </ul>
@@ -46,21 +48,21 @@ const Navbar = () => {
           />
           <div
             className={`${!toggle ? "hidden" : "flex"} p-6
-          bg-primary absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10
-          rounded-xl`}
+              bg-primary absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10
+              rounded-xl`}
           >
             <ul className="list-none text-white flex justify-end items-start flex-col gap-4">
-              {navLinks.map((Link) => (
+              {navLinks.map((link) => (
                 <li
-                  key={Link.id}
-                  className={`${active === Link.title ? "text-white" : "text-secondary"
+                  key={link.id}
+                  className={`${active === link.title ? "text-white" : "text-secondary"
                     }font-poppins text-[16px] font-medium cursor-pointer`}
                   onClick={() => {
-                    setActive(Link.title);
+                    setActive(link.title);
                     setToggle(!toggle);
                   }}
                 >
-                  <a href={`${Link.path}`}>{Link.title}</a>
+                  <NavLink to={link.path}>{link.title}</NavLink>
                 </li>
               ))}
             </ul>

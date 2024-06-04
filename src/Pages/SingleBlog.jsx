@@ -13,8 +13,6 @@ const SingleBlog = () => {
   const { data: blogs, error, isLoading } = useGetAllBlogsQuery();
   const singleBlogs = blogs?.find(blog => blog._id === id);
 
-
-
   return (
     <>
       <motion.div variants={textVariant()}>
@@ -28,15 +26,9 @@ const SingleBlog = () => {
           variants={fadeIn("", "", 0.1, 1)}
           className="mt-3 text-gray-600 text-[17px] leading-[30px]"
         >
-          {/* {singleBlogs?.blog} */}
-          {/* <p
-            dangerouslySetInnerHTML={{
-              __html: singleBlogs?.blog,
-            }}
-          ></p> */}
           <p
             dangerouslySetInnerHTML={{
-              __html: typeof description === 'string' ? description.slice(0, 300) : '',
+              __html: singleBlogs?.blog,
             }}
           ></p>
         </motion.p>

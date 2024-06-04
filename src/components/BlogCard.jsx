@@ -30,7 +30,7 @@ const BlogCard = ({
           <div className="mt-5 ">
             <p className='mt-2 text-white-100 text-[14px]'
               dangerouslySetInnerHTML={{
-                __html: typeof description === 'string' ? description.slice(0, 300) : '',
+                __html: blog?.slice(0, 300),
               }}
             ></p>
           </div>
